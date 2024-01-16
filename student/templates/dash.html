@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'dash.css' %}">
+</head>
+<body>
+    <div class="sidenav">
+  <a href="{% url 'dash' %}">Dashboard</a>
+  <a href="{% url 'semester' %}" class="sem">Semesters</a>
+  <a href="{% url 'subjects' %}" class="sub">Subjects</a>
+  <a href="{% url 'students' %}" class="stu">Students</a>
+  <a href="{% url 'results' %}" class="res">Results</a>
+</div>
+<section id="content">
+      <h1 class="dash-top">Dashboard</h1>
+      <div class="data">
+        <h3 class="regu">Regd students: <span>{{student_len}}</span></h3>
+        <h3 class="subl">Subjects Listed: <span>{{subject_len}}</span></h3>
+        <h3 class="ty">Total Semesters listed: <span>{{semester_len}}</span></h3>
+        <h3 class="resultd">Results Declared: <span>{{result_len}}</span></h4>
+      </div>
+    </section>
+</body>
+</html>

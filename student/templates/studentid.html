@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'studentid.css' %}">
+</head>
+<body>
+    <div style="margin-left: 200px;">
+    <div class="pop" id="pop">
+      <h1 class="pop-top">Result Page</h1>
+      <form method="POST" action="{% url 'sr' %}">
+        {% csrf_token %}
+        <h3 style="margin-top: 10%;">Student ID:</h3>
+        <input type="number" name="student_id" id="studentID">
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+        <br>
+        <br>
+        </form>
+    </div>
+
+</body>
+</html>

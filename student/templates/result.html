@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semesters</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'result.css' %}">
+</head>
+<body>
+    <div class="sidenav">
+  <a href="{% url 'dash' %}">Dashboard</a>
+  <a href="{% url 'semester' %}" class="sem">Semesters</a>
+  <a href="{% url 'subjects' %}" class="sub">Subjects</a>
+  <a href="{% url 'students' %}" class="stu">Students</a>
+  <a href="{% url 'results' %}" class="res">Results</a>
+</div>
+    <div style="margin-left: 200px;">
+    <h1 class="sems">Results</h1>
+    <div class="pop" id="pop">
+      <h1 class="pop-top">Result Details</h1>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ forms.as_p }}
+        <button type="submit" href="{% url 'results' %}" onclick="closePop()">Submit</button>
+        <br>
+        <br>
+    </form>
+    </div>
+    <button class="addf" onclick="openPop()">Add File</button>
+<table>
+  <tr>
+    <th>Sno</th>
+    <th>Student_ID</th>
+    <th>Name</th>
+    <th>Semester</th>
+    <th>Subjects</th>
+    <th>Grade</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  {% for sem in sems %}
+  <tr>
+    <td>{{ sem.Sno }}</td>
+    <td>{{ sem.student_ID }}</td>
+    <td>{{ sem.name }}</td>
+    <td>{{ sem.semester.year }}</td>
+    <td>{{ sem.subjects.subjects }}</td>
+    <td>{{ sem.grade }}</td>
+    <td>{{ sem.status }}</td>
+    <td>
+      <a href="/eds/{{ sem.Sno }}" class="imgs"><img src="{% static 'edit.png' %}"></a>  
+      <a class="imgs" href="/dels/{{ sem.Sno }}"><img src="{% static 'dustbin.png' %}"></a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+<script>
+  let pop = document.getElementById("pop")
+  function openPop(){
+    pop.classList.add("open-popup");
+  }
+  function closePop(){
+    pop.classList.remove("open-popup");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <table style="margin-top: 20px;">
+  <tr>
+    <th>Sno</th>
+    <th>Student_ID</th>
+    <th>Name</th>
+    <th>Semester</th>
+    <th>Subjects</th>
+    <th>Grade</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  {% for sem in sems %}
+  <tr>
+    <td>{{ sem.Sno }}</td>
+    <td>{{ sem.student_ID }}</td>
+    <td>{{ sem.name }}</td>
+    <td>{{ sem.semester.year }}</td>
+    <td>{{ sem.subjects.subjects }}</td>
+    <td>{{ sem.grade }}</td>
+    <td>{{ sem.status }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
